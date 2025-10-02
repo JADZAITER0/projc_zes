@@ -16,7 +16,7 @@ export default function ProductCard({
   id,
 }: ProductCardProps) {
   return (
-  <article className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-3 flex flex-col">
+    <article className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-3 flex flex-col">
       <div className="relative w-full h-48 sm:h-40 md:h-44 lg:h-52">
         <Image
           src={src}
@@ -27,14 +27,18 @@ export default function ProductCard({
         />
       </div>
 
-      <div className="mt-3 flex flex-col gap-1">
-  <h3 className="text-sm sm:text-base font-medium text-gray-800 truncate">
+      {/* Make content stretch and push price to the bottom */}
+      <div className="mt-3 flex flex-col flex-1">
+        <h3 className="text-sm sm:text-base font-medium text-gray-800 break-words line-clamp-2">
           {title}
         </h3>
+
         {number && (
-          <span className="text-xs text-gray-500">{number}</span>
+          <span className="text-xs text-gray-500 mt-1">{number}</span>
         )}
-  <div className="text-lg font-semibold text-blue-600">
+
+        {/* Push price to bottom using mt-auto */}
+        <div className="text-lg font-semibold text-blue-600 mt-auto">
           {price}
         </div>
       </div>
