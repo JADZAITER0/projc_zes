@@ -1,6 +1,8 @@
 
 "use client";
+import React, { use } from "react";
 import ProductCard from "@/components/ProductCard";
+
 
 export default function Home() {
   class Product {
@@ -48,7 +50,26 @@ const products: Product[] = [
   new Product("Cable outlet +cord-grip white", "16541.B", "—", "https://www.vimar.com/cache/images/catalog/16541_b-vimar-idea-passacavo-con-serracavo-bianco.58745-94b1bb7a8a2b.webp"),
   new Product("Blank module smooth front grey", "16542", "—", "https://www.vimar.com/cache/images/catalog/16542-vimar-idea-copriforo-fronte-liscio-grigio.57270-fdb689c77a19.webp"),
   new Product("Blank module smooth front white", "16542.B", "—", "https://www.vimar.com/cache/images/catalog/16542_b-vimar-idea-copriforo-fronte-liscio-bianco.57271-fdb689c77a19.webp"),
+  new Product("Classica plate 4M metal slate grey", "16734.46", "—", "https://www.vimar.com/cache/images/catalog/16734_46-vimar-idea-placca-classica-4m-ardesia.58840-9edaa4771f03.webp"),
+  new Product("Classica plate 6M metal slate grey", "16736.46", "—", "https://www.vimar.com/cache/images/catalog/16736_46-vimar-idea-placca-classica-6m-ardesia.58856-984da4ce439a.webp"),
+  new Product("Classica plate 3M techn. bright white", "16743.01", "—", "https://www.vimar.com/cache/images/catalog/16743_01-vimar-idea-placca-classica-3m-bianco-brillante.58860-0a51ed49687d.webp"),
+  new Product("Classica plate 3M techn. Idea white", "16743.04", "—", "https://www.vimar.com/cache/images/catalog/16743_04-vimar-idea-placca-classica-3m-bianco-idea.58861-0a51ed49687d.webp"),
+  new Product("Classica plate 3M techn. black", "16743.16", "—", "https://www.vimar.com/cache/images/catalog/16743_16-vimar-idea-placca-classica-3m-nero.58863-5473ed3344c8.webp"),
+  new Product("Classica plate 4M techn. bright white", "16744.01", "—", "https://www.vimar.com/cache/images/catalog/16744_01-vimar-idea-placca-classica-4m-bianco-brillante.58867-5473ed3344c8.webp"),
+  new Product("Classica plate 4M techn. Idea white", "16744.04", "—", "https://www.vimar.com/cache/images/catalog/16744_04-vimar-idea-placca-classica-4m-bianco-idea.58868-5473ed3344c8.webp"),
+  new Product("Classica plate 4M techn. black", "16744.16", "—", "https://www.vimar.com/cache/images/catalog/16744_16-vimar-idea-placca-classica-4m-nero.58870-2cd07e651352.webp"),
+  new Product("Classica plate 6M techn. bright white", "16746.01", "—", "https://www.vimar.com/cache/images/catalog/16746_01-vimar-idea-placca-classica-6m-bianco-brillante.58881-6bd8d98b60d6.webp"),
+  new Product("Classica plate 6M techn. Idea white", "16746.04", "—", "https://www.vimar.com/cache/images/catalog/16746_04-vimar-idea-placca-classica-6m-bianco-idea.58882-6bd8d98b60d6.webp"),
+  new Product("Rondò plate 3M techn. Idea white", "16763.04", "—", "https://www.vimar.com/cache/images/catalog/16763_04-vimar-idea-placca-rondo-3m-bianco-idea.58943-daff00fad407.webp"),
 ];
+
+  const [search, setSearch] = React.useState("");
+
+  const filteredProducts = products.filter(
+    (product) =>
+      product.title.toLowerCase().includes(search.toLowerCase()) ||
+      product.number.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div>
@@ -73,12 +94,21 @@ const products: Product[] = [
         </svg>
       </nav>
 
+      <div className="w-full flex justify-center py-4">
+        <input
+          type="text"
+          placeholder="Search by title or number..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          className="border border-gray-300 rounded-lg px-4 py-2 w-full max-w-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
+
       <main className="min-h-screen bg-gray-50 p-4 sm:p-6 transition-colors">
-      
 
         <section className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {products.map((product, idx) => (
+            {filteredProducts.map((product, idx) => (
               <ProductCard
                 key={idx}
                 src={product.src}
