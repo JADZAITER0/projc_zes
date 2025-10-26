@@ -1,0 +1,6 @@
+# robots.txt for Zouheir Electric
+User-agent: *
+Allow: /
+
+# Replace the URL below with your actual live domain before publishing
+Sitemap: https://projc-zes.vercel.app/sitemap.xml

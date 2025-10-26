@@ -13,8 +13,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zouheir Electric Store",
-  description: "In Stock",
+  title: "Zouheir Electric",
+  description: "Zouheir Electric — catalog of Vimar Idea electrical plates, switches and outlets.",
+  keywords: [
+    "Zouheir Electric",
+    "Vimar",
+    "Vimar Idea",
+    "electrical",
+    "plates",
+    "switches",
+    "outlets",
+    "electrical accessories",
+  ],
 };
 
 export default function RootLayout({
@@ -27,6 +37,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* JSON-LD Organization - update `url` and `telephone` to your live domain/phone before publishing */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Zouheir Electric",
+              url: "https://projc-zes.vercel.app/",
+              telephone: "+96103816746",
+              sameAs: ["https://wa.me/96103816746"],
+            }),
+          }}
+        />
         {children}
       </body>
     </html>

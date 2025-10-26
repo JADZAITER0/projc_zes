@@ -109,7 +109,7 @@ const products: Product[] = [
           </svg>
         </nav>
 
-        <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-4 py-4">
+    <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-4 py-4">
           <input
             type="text"
             placeholder="Search by title or number..."
@@ -136,6 +136,14 @@ const products: Product[] = [
                 {cat.label}
               </button>
             ))}
+          </div>
+
+          {/* Brand badge above the product lists */}
+          <div className="w-full flex justify-center mb-4">
+            <div className="inline-flex items-center gap-3 bg-white px-4 py-2 rounded-full shadow-sm border">
+              <span className="text-xs font-semibold text-gray-500">Brand</span>
+              <span className="text-sm font-bold text-gray-800 uppercase tracking-wide">Vimar Idea</span>
+            </div>
           </div>
         </div>
 
